@@ -1,0 +1,31 @@
+GET http://localhost:3000/commentaires
+
+###
+GET  http://localhost:3000/commentaires/1
+
+###
+GET http://localhost:3000/commentaires?take=2&skip=2
+
+###
+POST http://localhost:3000/commentaires
+Content-Type: application/json
+
+{
+    "email":"3@gmail.com",
+    "contenu" : "bla bla bla 3"
+}
+
+###
+DELETE http://localhost:3000/commentaires/3
+
+
+
+###
+PATCH http://localhost:3000/commentaires
+Content-Type: application/json
+
+{
+    "id": 2,
+    "email":"2 modified@gmail.com",
+    "contenu" : "bla bla bla bla 2 modified"
+}

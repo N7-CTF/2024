@@ -1,0 +1,268 @@
+{% extends "layout.html" %} {% block title %}Welcome {{ current_user.username
+}}{% endblock %} {% block content %}
+<div>
+	<div
+		class="relative flex h-screen bg-blue-50"
+		x-data="setup()"
+		x-init="$refs.loadingScreen.classList.add('hidden')"
+	>
+		<!-- Loading Screen -->
+		<div
+			x-ref="loadingScreen"
+			class="fixed inset-0 z-50 flex items-center justify-center bg-blue-600 bg-opacity-20"
+			style="backdrop-filter: blur(14px)"
+		>
+			<span class="text-2xl">Loading...</span>
+		</div>
+		<!-- Sidebar -->
+		<aside
+			class="fixed left-0 right-0 z-10 flex-col flex-shrink-0 h-full overflow-hidden transition-all bg-transparent bottom-10 xl:h-screen top-16 xl:static xl:z-auto"
+			:class="{'flex xl:w-64': isSidebarOpen, 'hidden xl:flex xl:w-16': !isSidebarOpen}"
+		>
+			<!-- Sidebar header -->
+			<div
+				class="flex-shrink-0 hidden px-2 max-h-14 xl:items-center xl:justify-start xl:space-x-3 xl:flex xl:max-h-14 xl:h-full xl:px-4"
+			>
+				<!-- Sidebar Button -->
+				<button @click="toggleSidebar" class="p-2 text-[#00784A] rounded-full">
+					<svg
+						class="w-6 h-6"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 6h16M4 12h16M4 18h16"
+						/>
+					</svg>
+				</button>
+				<!-- Logo -->
+				<a
+					href="#"
+					:class="{'xl:hidden': !isSidebarOpen}"
+					class="flex-shrink-0 text-2xl font-bold tracking-widest text-[#00784A] uppercase"
+				>
+					<img
+						src="/static/assets/Logo_black.svg"
+						alt="Logo"
+						class="h-[40px]"
+					/>
+				</a>
+			</div>
+			<!-- Sidebar Content -->
+			<div
+				class="fixed left-0 flex flex-col flex-1 max-h-screen px-2 overflow-hidden right-3 top-16 bottom-10 xl:static xl:pt-2 xl:pl-4 xl:mb-4"
+			>
+				<div
+					:class="{'min-w-full xl:w-14': isSidebarOpen}"
+					class="flex-1 max-h-full p-2 overflow-y-auto bg-white rounded-md shadow-2xl lg:shadow-md"
+				>
+					<nav class="">
+						<ul class="space-y-2">
+							<!-- <template x-for="i in 30" :key="i"> -->
+							<li class="">
+								<button class="flex items-center space-x-2">
+									<span>
+										<svg
+											class="w-6 h-6"
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+											/>
+										</svg>
+									</span>
+									<span :class="{'xl:hidden': !isSidebarOpen}">
+										Dashboard
+									</span>
+								</button>
+							</li>
+							<!-- </template> -->
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</aside>
+		<div
+			class="relative flex flex-col flex-1 h-full max-h-full overflow-y-scroll py-4"
+		>
+			<!-- Navbar -->
+			<header
+				class="sticky top-0 flex items-center flex-shrink-0 w-full h-full bg-opacity-100 bg-blue-50 max-h-14"
+			>
+				<!-- Menu Button -->
+				<div class="flex items-center flex-shrink-0 xl:hidden">
+					<button
+						@click="toggleSidebar"
+						class="p-2 text-blue-600 rounded-full hover:bg-blue-200"
+					>
+						<svg
+							class="w-6 h-6"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h16"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div class="flex items-center justify-between flex-1">
+					<!-- Logo -->
+					<a
+						href="#"
+						:class="{'xl:hidden ml-2':isSidebarOpen, 'block ml-2':!isSidebarOpen}"
+						class="flex-shrink-0 text-2xl font-bold tracking-widest text-[#00784A] uppercase"
+					>
+						<img
+							src="/static/assets/Logo_black.svg"
+							alt="Logo"
+							class="h-[40px]"
+						/>
+					</a>
+
+					<nav
+						class="relative flex items-center justify-end flex-1 ml-3 lg:justify-start"
+					>
+						<!-- Right Links -->
+						<ul
+							class="flex items-center justify-center ml-auto mr-2 space-x-2 lg:mr-5"
+						>
+							<!-- Notifications Button -->
+							<li>
+								<button
+									class="inline-block p-2 bg-[#00784A] rounded-full text-white"
+								>
+									<svg
+										class="w-6 h-6"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+										/>
+									</svg>
+								</button>
+							</li>
+							<!-- Logout Button -->
+							<li>
+								<a
+									href="/logout"
+									class="inline-block p-2 bg-red-500 rounded-full text-white"
+								>
+									<svg
+										class="w-6 h-6"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<g>
+											<path
+												d="M12.9999 2C10.2385 2 7.99991 4.23858 7.99991 7C7.99991 7.55228 8.44762 8 8.99991 8C9.55219 8 9.99991 7.55228 9.99991 7C9.99991 5.34315 11.3431 4 12.9999 4H16.9999C18.6568 4 19.9999 5.34315 19.9999 7V17C19.9999 18.6569 18.6568 20 16.9999 20H12.9999C11.3431 20 9.99991 18.6569 9.99991 17C9.99991 16.4477 9.55219 16 8.99991 16C8.44762 16 7.99991 16.4477 7.99991 17C7.99991 19.7614 10.2385 22 12.9999 22H16.9999C19.7613 22 21.9999 19.7614 21.9999 17V7C21.9999 4.23858 19.7613 2 16.9999 2H12.9999Z"
+												fill="currentColor"
+											></path>
+											<path
+												d="M13.9999 11C14.5522 11 14.9999 11.4477 14.9999 12C14.9999 12.5523 14.5522 13 13.9999 13V11Z"
+												fill="currentColor"
+											></path>
+											<path
+												d="M5.71783 11C5.80685 10.8902 5.89214 10.7837 5.97282 10.682C6.21831 10.3723 6.42615 10.1004 6.57291 9.90549C6.64636 9.80795 6.70468 9.72946 6.74495 9.67492L6.79152 9.61162L6.804 9.59454L6.80842 9.58848C6.80846 9.58842 6.80892 9.58778 5.99991 9L6.80842 9.58848C7.13304 9.14167 7.0345 8.51561 6.58769 8.19098C6.14091 7.86637 5.51558 7.9654 5.19094 8.41215L5.18812 8.41602L5.17788 8.43002L5.13612 8.48679C5.09918 8.53682 5.04456 8.61033 4.97516 8.7025C4.83623 8.88702 4.63874 9.14542 4.40567 9.43937C3.93443 10.0337 3.33759 10.7481 2.7928 11.2929L2.08569 12L2.7928 12.7071C3.33759 13.2519 3.93443 13.9663 4.40567 14.5606C4.63874 14.8546 4.83623 15.113 4.97516 15.2975C5.04456 15.3897 5.09918 15.4632 5.13612 15.5132L5.17788 15.57L5.18812 15.584L5.19045 15.5872C5.51509 16.0339 6.14091 16.1336 6.58769 15.809C7.0345 15.4844 7.13355 14.859 6.80892 14.4122L5.99991 15C6.80892 14.4122 6.80897 14.4123 6.80892 14.4122L6.804 14.4055L6.79152 14.3884L6.74495 14.3251C6.70468 14.2705 6.64636 14.1921 6.57291 14.0945C6.42615 13.8996 6.21831 13.6277 5.97282 13.318C5.89214 13.2163 5.80685 13.1098 5.71783 13H13.9999V11H5.71783Z"
+												fill="currentColor"
+											></path>
+										</g>
+									</svg>
+								</a>
+							</li>
+							<!-- Avatar Button -->
+							<li class="flex items-center gap-2">
+								<button
+									class="p-px border-2 border-blue-100 rounded-full w-11 h-11"
+								>
+									<img
+										class="block object-cover rounded-full"
+										src="/static/assets/user-avatar.png"
+										alt="{{ current_user.username }}"
+									/>
+								</button>
+								<span class="text-sm font-semibold text-gray-700">
+									{{ current_user.username }}
+								</span>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<div class="flex flex-col flex-1 max-h-full pl-2 pr-2 rounded-md xl:pr-4">
+				<!-- Main Content -->
+				<main class="flex-1 pt-2">
+					<!-- Placeholder Cards -->
+					<div class="p-4 py-10 text-white bg-blue-500 rounded-md shadow-md">
+						<div class="flex items-center justify-center">
+							<span class="text-3xl font-semibold tracking-wider uppercase">
+								In Progress
+							</span>
+						</div>
+					</div>
+					<div class="grid grid-cols-1 gap-6 mt-4 md:grid-cols-2">
+						<template x-for="i in 4" :key="i">
+							<div
+								class="flex items-center justify-center w-full h-32 bg-white rounded-md shadow-md"
+							>
+								<span class="text-xl tracking-wider text-gray-500 uppercase">
+									placeholder
+								</span>
+							</div>
+						</template>
+					</div>
+					<div
+						class="flex items-center justify-center w-full h-56 bg-white rounded-md shadow-md mt-4"
+					>
+						<span class="text-xl tracking-wider text-gray-500 uppercase">
+							placeholder
+						</span>
+					</div>
+				</main>
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js"
+		defer
+	></script>
+	<script>
+		function setup() {
+			return {
+				isSidebarOpen: false,
+				toggleSidebar() {
+					this.isSidebarOpen = !this.isSidebarOpen;
+				},
+				isSettingsPanelOpen: false,
+				toggleSettingsPanel() {
+					this.isSettingsPanelOpen = !this.isSettingsPanelOpen;
+				},
+			};
+		}
+	</script>
+</div>
+{% endblock %}

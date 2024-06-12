@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% block head %}
+		<script src="https://cdn.tailwindcss.com"></script>
+		<title>{% block title %}{% endblock %} - My Webpage</title>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=PT+Serif:wght@400;700&display=swap");
+			.font-pt-serif {
+				font-family: PT Serif, serif;
+			}
+
+			.font-montserrat {
+				font-family: Montserrat, sans-serif;
+			}
+		</style>
+		{% endblock %}
+	</head>
+	<body>
+		<main>{% block content %}{% endblock %}</main>
+		{% if is_debug_mode %}
+		<script
+			src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+			integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+			crossorigin="anonymous"
+		></script>
+		<script>
+			console.log("Debug mode is enabled (?debug=1)");
+
+			const socket = io();
+			socket.on("connect", () => {
+				console.log("Connected to the server:", socket.id);
+			});
+
+			// Test connection
+			socket.emit("message", "getData:users");
+			socket.on("response", (data) => {
+				console.log("Server response:", data);
+			});
+		</script>
+		{% else %}
+		<script>
+			console.log("Debug mode is disabled (debug=0)");
+		</script>
+		{% endif %} {% block footer %}{% endblock %}
+	</body>
+</html>

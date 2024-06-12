@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Welcome {{ username }}</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous"
+		/>
+	</head>
+	<body>
+		<main>
+			<div class="container py-4">
+				{{#error}}
+				<div class="alert alert-danger" role="alert">
+					{{ error }}
+				</div>
+				{{/error}}
+
+				{{#success}}
+				<div class="alert alert-success" role="alert">
+					{{ success }}
+				</div>
+				{{/success}}
+
+				<div class="p-5 mb-4 bg-body-tertiary rounded-3 border">
+					<div class="container-fluid py-5">
+						<h1 class="display-5 fw-bold">
+							Welcome <span class="text-danger">{{ username }}</span>
+						</h1>
+						<p class="fs-4 mb-4">
+							In the land of sprockets and wobblywops, the flibberflabbers
+							danced merrily under the moonlit sky, their jibber-jabber echoing
+							through the gumdrop trees. Meanwhile, the snickerdoodles sang a
+							tune only the rainbow snails could hear, while the floppy flippers
+							frolicked in the fizzy fountains of fandango.
+						</p>
+						<a href="{{#isAdmin}}/flag{{/isAdmin}}" {{^isAdmin}}style="pointer-events: none"{{/isAdmin}}>
+							<button class="btn btn-primary btn-lg" type="button" {{^isAdmin}}disabled{{/isAdmin}}>
+								Get The Flag
+							</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="row align-items-md-stretch">
+					<div class="col-md-6">
+						<div class="h-100 p-5 text-bg-dark rounded-3">
+							<h2>Add new user</h2>
+							<form action="/admin">
+								<div class="mb-3">
+									<label for="username" class="form-label">Username</label>
+									<input
+										type="text"
+										class="form-control"
+										id="username"
+										name="username"
+										required
+									/>
+								</div>
+								<div class="mb-3">
+									<label for="email" class="form-label">Email</label>
+									<input
+										type="email"
+										class="form-control"
+										id="email"
+										name="email"
+										required
+									/>
+								</div>
+								<div class="mb-3">
+									<label for="password" class="form-label">Password</label>
+									<input
+										type="password"
+										class="form-control"
+										id="password"
+										name="password"
+										required
+									/>
+								</div>
+								<input hidden type="text" name="action" value="addUser" />
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="h-100 p-5 bg-body-tertiary border rounded-3">
+							<h2>Melody of Revelation</h2>
+							<p>
+								In the vault, behind the red door, lies the secret that can
+								change everything. Only those who know the melody can unlock its
+								power. The notes are scattered across the city, hidden in plain
+								sight. Follow the clues, listen closely, and the truth will
+								reveal itself. But beware, for others are also seeking the
+								melody, and its meaning may not be what it seems.
+							</p>
+							<p>
+								Rumors swirl around the melody's origin, some claiming it is a
+								gift from the heavens, others a creation of ancient alchemy.
+								Whispers of its power have reached the ears of the curious and
+								the ambitious alike, sparking a race to decipher its tune.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>

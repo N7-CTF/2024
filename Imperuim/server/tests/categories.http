@@ -1,0 +1,35 @@
+GET http://localhost:3000/categories
+
+###
+GET  http://localhost:3000/categories/1
+
+###
+GET http://localhost:3000/categories?take=2&skip=2
+
+###
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+    "nom":"categories 3"
+}
+
+###
+DELETE http://localhost:3000/categories/3
+
+
+
+###
+PATCH http://localhost:3000/categories
+Content-Type: application/json
+
+{
+    "id": 2,
+    "nom":"categorie 2 modifed"
+
+}
+
+
+
+###
+GET  http://localhost:3000/categories/count

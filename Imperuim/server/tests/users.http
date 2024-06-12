@@ -1,0 +1,35 @@
+GET http://localhost:3000/users
+
+###
+GET  http://localhost:3000/users/1
+
+###
+GET http://localhost:3000/users?take=2&skip=2
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name" : "testuser1",
+    "email":"testuser1@gmail.com",
+    "password":"testuser1",
+    "role": "AUTHOR"
+}
+
+###
+DELETE http://localhost:3000/users/4
+
+
+
+###
+PATCH http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "id" : 3,
+    "name" : "username3",
+    "email":"user3@gmail.com",
+    "password":"user3",
+    "role": "AUTHOR"
+}

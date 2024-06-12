@@ -1,0 +1,348 @@
+{% extends "layout.html" %} {% block title %}Home{% endblock %} {% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/styles.css" />
+{% endblock %} {% block content %}
+<!-- Navigation -->
+<nav
+	class="fixed flex justify-between py-6 w-full lg:px-48 md:px-12 px-4 content-center bg-secondary z-10 border border-b"
+>
+	<div class="flex items-center mx-auto md:mx-0">
+		<img src="/static/assets/Logo_black.svg" alt="Logo" class="h-[50px]" />
+	</div>
+	<div class="font-montserrat hidden md:block">
+		<a href="/login">
+			<button class="mr-6">Login</button>
+		</a>
+		<button class="py-2 px-4 text-white bg-[#00784A] rounded-3xl">
+			Signup
+		</button>
+	</div>
+</nav>
+
+<!-- Hero -->
+<section
+	class="pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary"
+>
+	<div class="md:flex-1 md:mr-10">
+		<h1 class="font-pt-serif text-4xl font-bold mb-7 leading-normal">
+			<span class="bg-underline1 bg-left-bottom bg-no-repeat pb-2 bg-100%">
+				CyberGuard
+			</span>
+			- Your Ultimate Security Companion
+		</h1>
+		<p class="font-pt-serif font-normal mb-7">
+			Safeguard your digital life with CyberGuard, the ultimate security
+			companion. Stay ahead of cyber threats with our advanced threat detection
+			algorithms and real-time monitoring. Easy to install and use, CyberGuard
+			ensures your digital world is always protected. Choose CyberGuard and
+			browse with confidence.
+		</p>
+		<div class="font-montserrat">
+			<button
+				class="bg-[#00784A] px-6 py-4 rounded-lg border-2 border-[#00784A] border-solid text-white mr-2 mb-2"
+			>
+				Call to action
+			</button>
+			<button
+				class="px-6 py-4 border-2 border-[#00784A] border-solid rounded-lg"
+			>
+				Secondary action
+			</button>
+		</div>
+	</div>
+	<div class="flex justify-around md:block mt-8 md:mt-0 md:flex-1">
+		<img src="/static/assets/Security On-bro.png" alt="Product" />
+	</div>
+</section>
+
+<!-- How it works -->
+<section class="bg-[#00784A] text-white sectionSize">
+	<div>
+		<h2 class="secondaryTitle bg-underline2 bg-100%">How it works</h2>
+	</div>
+	<div class="flex flex-col md:flex-row">
+		<div class="flex-1 mx-8 flex flex-col items-center my-4">
+			<div
+				class="border-2 rounded-full bg-secondary text-[#00784A] h-12 w-12 flex justify-center items-center mb-3"
+			>
+				1
+			</div>
+			<h3 class="font-montserrat font-medium text-xl mb-2">Install</h3>
+			<p class="text-center font-montserrat">
+				Simply download and install CyberGuard on your device.
+			</p>
+		</div>
+		<div class="flex-1 mx-8 flex flex-col items-center my-4">
+			<div
+				class="border-2 rounded-full bg-secondary text-[#00784A] h-12 w-12 flex justify-center items-center mb-3"
+			>
+				2
+			</div>
+			<h3 class="font-montserrat font-medium text-xl mb-2">Activate</h3>
+			<p class="text-center font-montserrat">
+				Activate CyberGuard with your unique license key.
+			</p>
+		</div>
+		<div class="flex-1 mx-8 flex flex-col items-center my-4">
+			<div
+				class="border-2 rounded-full bg-secondary text-[#00784A] h-12 w-12 flex justify-center items-center mb-3"
+			>
+				3
+			</div>
+			<h3 class="font-montserrat font-medium text-xl mb-2">Protect</h3>
+			<p class="text-center font-montserrat">
+				Enjoy enhanced security and peace of mind.
+			</p>
+		</div>
+	</div>
+</section>
+
+<!-- Features -->
+<section class="sectionSize bg-secondary">
+	<div>
+		<h2 class="secondaryTitle bg-underline3 bg-100%">Features</h2>
+	</div>
+	<div class="md:grid md:grid-cols-2 md:grid-rows-2">
+		<div class="flex items-start font-montserrat my-6 mr-10">
+			<img src="/static/assets/logos/Heart.svg" alt="" class="h-7 mr-4" />
+			<div>
+				<h3 class="font-semibold text-2xl">Advanced Threat Detection</h3>
+				<p>
+					Stay ahead of potential threats with cutting-edge detection
+					algorithms.
+				</p>
+			</div>
+		</div>
+
+		<div class="flex items-start font-montserrat my-6 mr-10">
+			<img src="/static/assets/logos/Heart.svg" alt="" class="h-7 mr-4" />
+			<div>
+				<h3 class="font-semibold text-2xl">Real-Time Monitoring</h3>
+				<p>
+					Monitor your system's security status in real time for immediate
+					action.
+				</p>
+			</div>
+		</div>
+
+		<div class="flex items-start font-montserrat my-6 mr-10">
+			<img src="/static/assets/logos/Heart.svg" alt="" class="h-7 mr-4" />
+			<div>
+				<h3 class="font-semibold text-2xl">Easy to Use</h3>
+				<p>User-friendly interface makes CyberGuard accessible to everyone.</p>
+			</div>
+		</div>
+
+		<div class="flex items-start font-montserrat my-6 mr-10">
+			<img src="/static/assets/logos/Heart.svg" alt="" class="h-7 mr-4" />
+			<div>
+				<h3 class="font-semibold text-2xl">24/7 Support</h3>
+				<p>Get round-the-clock assistance from our dedicated support team.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Pricing -->
+<section class="sectionSize bg-secondary py-0">
+	<div>
+		<h2 class="secondaryTitle bg-underline4 mb-0 bg-100%">Pricing</h2>
+	</div>
+	<div class="flex w-full flex-col md:flex-row">
+		<div
+			class="flex-1 flex flex-col mx-6 shadow-2xl relative bg-secondary rounded-2xl py-5 px-8 my-8 md:top-24"
+		>
+			<h3 class="font-pt-serif font-normal text-2xl mb-4">The Good</h3>
+			<div class="font-montserrat font-bold text-2xl mb-4">
+				$25
+				<span class="font-normal text-base"> / month</span>
+			</div>
+
+			<div class="flex">
+				<img src="/static/assets/logos/CheckedBox.svg" alt="" class="mr-1" />
+				<p>Regular security updates and patches.</p>
+			</div>
+			<div class="flex">
+				<img src="/static/assets/logos/CheckedBox.svg" alt="" class="mr-1" />
+				<p>Access to our knowledge base for security best practices.</p>
+			</div>
+			<div class="flex">
+				<img src="/static/assets/logos/CheckedBox.svg" alt="" class="mr-1" />
+				<p>Priority support for any issues or questions.</p>
+			</div>
+
+			<button
+				class="border-2 border-solid border-[#00784A] rounded-xl text-lg py-3 mt-4"
+			>
+				Choose plan
+			</button>
+		</div>
+
+		<div
+			class="flex-1 flex flex-col mx-6 shadow-2xl relative bg-secondary rounded-2xl py-5 px-8 my-8 md:top-12"
+		>
+			<h3 class="font-pt-serif font-normal text-2xl mb-4">The Bad</h3>
+			<div class="font-montserrat font-bold text-2xl mb-4">
+				$40
+				<span class="font-normal text-base"> / month</span>
+			</div>
+
+			<div class="flex">
+				<img src="/static/assets/logos/CheckedBox.svg" alt="" class="mr-1" />
+				<p>
+					All features of "The Good" plan, plus advanced threat intelligence.
+				</p>
+			</div>
+			<div class="flex">
+				<img src="/static/assets/logos/CheckedBox.svg" alt="" class="mr-1" />
+				<p>Customizable security policies to fit your specific needs.</p>
+			</div>
+			<div class="flex">
+				<img src="/static/assets/logos/CheckedBox.svg" alt="" class="mr-1" />
+				<p>Quarterly security audits to ensure your system is secure.</p>
+			</div>
+
+			<button
+				class="border-2 border-solid border-[#00784A] rounded-xl text-lg py-3 mt-4"
+			>
+				Choose plan
+			</button>
+		</div>
+
+		<div
+			class="flex-1 flex flex-col mx-6 shadow-2xl relative bg-secondary rounded-2xl py-5 px-8 my-8 md:top-24"
+		>
+			<h3 class="font-pt-serif font-normal text-2xl mb-4">The Ugly</h3>
+			<div class="font-montserrat font-bold text-2xl mb-4">
+				$50
+				<span class="font-normal text-base"> / month</span>
+			</div>
+
+			<div class="flex">
+				<img src="/static/assets/logos/CheckedBox.svg" alt="" class="mr-1" />
+				<p>All features of "The Bad" plan, plus dedicated account manager.</p>
+			</div>
+			<div class="flex">
+				<img src="/static/assets/logos/CheckedBox.svg" alt="" class="mr-1" />
+				<p>On-site training for your team on cybersecurity best practices.</p>
+			</div>
+			<div class="flex">
+				<img src="/static/assets/logos/CheckedBox.svg" alt="" class="mr-1" />
+				<p>
+					Bi-annual penetration testing to identify and fix vulnerabilities.
+				</p>
+			</div>
+
+			<button
+				class="border-2 border-solid border-[#00784A] rounded-xl text-lg py-3 mt-4"
+			>
+				Choose plan
+			</button>
+		</div>
+	</div>
+</section>
+
+<!-- FAQ  -->
+<section class="sectionSize items-start pt-8 md:pt-36 bg-[#00784A] text-white">
+	<div>
+		<h2 class="secondaryTitle bg-highlight3 p-10 mb-0 bg-center bg-100%">
+			FAQ
+		</h2>
+	</div>
+
+	<div toggleElement class="w-full py-4">
+		<div class="flex justify-between items-center">
+			<div question class="font-montserrat font-medium mr-auto">
+				Can I try CyberGuard before purchasing?
+			</div>
+			<img
+				src="/static/assets/logos/CaretRight.svg"
+				alt=""
+				class="transform transition-transform"
+			/>
+		</div>
+		<div answer class="font-montserrat text-sm font-extralight pb-8 hidden">
+			Yes, we offer a free trial period for you to experience CyberGuard's
+			features.
+		</div>
+	</div>
+	<hr class="w-full bg-white" />
+
+	<div toggleElement class="w-full py-4">
+		<div class="flex justify-between items-center">
+			<div question class="font-montserrat font-medium mr-auto">
+				Do you offer refunds?
+			</div>
+			<img
+				src="/static/assets/logos/CaretRight.svg"
+				alt=""
+				class="transform transition-transform"
+			/>
+		</div>
+		<div answer class="font-montserrat text-sm font-extralight pb-8 hidden">
+			Yes, we offer a 30-day money-back guarantee if you are not satisfied with
+			CyberGuard.
+		</div>
+	</div>
+	<hr class="w-full bg-white" />
+
+	<div toggleElement class="w-full py-4">
+		<div class="flex justify-between items-center">
+			<div question class="font-montserrat font-medium mr-auto">
+				Am I awesome?
+			</div>
+			<img
+				src="/static/assets/logos/CaretRight.svg"
+				alt=""
+				class="transform transition-transform"
+			/>
+		</div>
+		<div answer class="font-montserrat text-sm font-extralight pb-8 hidden">
+			Yes! No doubt about it ^_^.
+		</div>
+	</div>
+	<hr class="w-full bg-white" />
+</section>
+
+<!-- Footer -->
+<section class="bg-[#00784A] sectionSize">
+	<div class="mb-4">
+		<img src="/static/assets/Logo_white.svg" alt="Logo" class="h-[50px]" />
+	</div>
+	<div class="flex mb-8">
+		<a href="#">
+			<img
+				src="/static/assets/logos/Facebook.svg"
+				alt="Facebook logo"
+				class="mx-4"
+			/>
+		</a>
+		<a href="#">
+			<img
+				src="/static/assets/logos/Youtube.svg"
+				alt="Youtube logo"
+				class="mx-4"
+			/>
+		</a>
+		<a href="#">
+			<img
+				src="/static/assets/logos/Instagram.svg"
+				alt="Instagram logo"
+				class="mx-4"
+			/>
+		</a>
+		<a href="#">
+			<img
+				src="/static/assets/logos/Twitter.svg"
+				alt="Twitter logo"
+				class="mx-4"
+			/>
+		</a>
+	</div>
+	<div class="text-white font-montserrat text-sm">
+		&copy; 2015 CyberGuard. All rights reserved
+	</div>
+</section>
+{% endblock %} {% block footer %} {{ super() }}
+<script src="/static/script.js"></script>
+{% endblock %}

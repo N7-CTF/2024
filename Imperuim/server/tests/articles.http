@@ -1,0 +1,41 @@
+GET http://localhost:3000/articles
+
+
+###
+GET http://localhost:3000/articles/latest
+
+###
+GET  http://localhost:3000/articles/1
+
+###
+GET http://localhost:3000/articles?take=2&skip=2
+
+###
+POST http://localhost:3000/articles
+Content-Type: application/json
+
+{
+    "titre":"post3",
+    "contenu" : "bla bla bla 3",
+    "image" : "",
+    "published": true,
+    "utilisateurId" : 4
+}
+
+###
+DELETE http://localhost:3000/articles/3
+
+
+
+###
+PATCH http://localhost:3000/articles
+Content-Type: application/json
+
+{
+    "id": 2,
+    "titre":"post2 modifed",
+    "contenu" : "bla bla bla 222",
+    "image" : "",
+    "published": true
+}
+
