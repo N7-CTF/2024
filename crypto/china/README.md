@@ -57,4 +57,9 @@ This script solves the challenge using the Chinese Remainder Theorem (CRT). Give
 
 - Compute the modular inverses and decryption values.
 
+
+## Author
+
+- [@Yvesei](https://github.com/Yvesei)
+
 - Use the CRT to reconstruct the original message.
