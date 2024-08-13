@@ -14,3 +14,9 @@ you can use some services that lets you produce a txt file with the same hash as
 https://www.mathstat.dal.ca/~selinger/md5collision/
 
 an easy way we can download the 2 .exe files and then changes their ectention to .txt. and voila, the flag.
+
+
+## Authors
+
+- [@Yvesei](https://github.com/Yvesei)
+- [@ElhoubeBrahim](https://github.com/ElhoubeBrahim)
