@@ -17,3 +17,6 @@ when we find the secret key used to sign jwt token, we can go ahead and change t
 finally we should put the token in the place of the old one.
 then proceed to /flag endpoint.
 
+## Author
+
+- [@ElhoubeBrahim](https://github.com/ElhoubeBrahim)
