@@ -41,3 +41,10 @@ Let's use a XOR function.
 ![Alt text](20240502172002.png?raw=true "Title")
 
 And finally there's our flag `N7-CTF{17'5_d4n63r0u5_70_90_4l0n3!_74k3_7h15_c47_w17h_y0u}` .
+
+
+
+## Authors
+
+- [@Yvesei](https://github.com/Yvesei)
+- [@Issaminu](https://github.com/Issaminu)
